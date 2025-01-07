@@ -11,7 +11,7 @@
 <script>
 (function() {
 emailjs.init({
-publicKey: "FH0zAcJOj0iDLsQGR",
+publicKey: "jDE8nQ7KU9m4EJNo7",
 blockHeadless: false,
 });
 })();
@@ -300,7 +300,7 @@ localStorage.removeItem('discord_token');
 }
 
 function showUserProfile(userData) {
-document.getElementById('userAvatar').src = 
+document.getElementById('userAvatar').src =
 `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
 document.getElementById('userName').textContent = userData.username;
 document.getElementById('userProfile').style.display = 'flex';
@@ -334,7 +334,12 @@ discord_id: document.querySelector('input[name="discord"]').value,
 order_details: document.querySelector('textarea[name="details"]').value
 };
 
-const response = await emailjs.send('service_l82w2oc', 'template_12abcav', templateParams);
+const response = await emailjs.send(
+'service_l82w2oc',
+'template_12abcav',
+templateParams,
+'Ae_3xvqvwdvSJ4k22lbWc'
+);
 
 if (response.status === 200) {
 Swal.fire({
@@ -360,11 +365,8 @@ submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الطلب'
 }
 }
 
-// تشغيل التحقق عند تحميل الصفحة
 window.onload = function() {
 checkAuth();
-
-// التحقق من كود التفويض بعد تسجيل الدخول
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 if (code) {
