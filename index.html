@@ -1,225 +1,301 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoonLith | متجر التصاميم الإبداعية</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #7289da;
-            --secondary-color: #2c2f33;
-            --accent-color: #ff4081;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoonLith Studio | الاستديو الإبداعي</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+--primary: #8E44AD;
+--secondary: #9B59B6;
+--accent: #D7BDE2;
+--dark: #2C3E50;
+--light: #F3F2F7;
+}
 
-        body {
-            background: #f8f9fa;
-            font-family: 'Tajawal', sans-serif;
-        }
+body {
+background: linear-gradient(135deg, var(--accent), #fff);
+font-family: 'Tajawal', sans-serif;
+}
 
-        .navbar {
-            background: var(--secondary-color) !important;
-        }
+.navbar {
+background: linear-gradient(45deg, var(--primary), var(--secondary)) !important;
+padding: 15px 0;
+box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
 
-        .hero-section {
-            background: linear-gradient(45deg, var(--secondary-color), #1a1b1e);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
+.hero-section {
+background: linear-gradient(45deg, var(--primary), var(--secondary));
+color: white;
+padding: 120px 0;
+text-align: center;
+margin-bottom: 50px;
+}
 
-        .design-card {
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            background: white;
-        }
+.card {
+border: none;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+transition: all 0.3s ease;
+overflow: hidden;
+}
 
-        .design-card:hover {
-            transform: translateY(-10px);
-        }
+.card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
 
-        .design-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+.price-tag {
+background: linear-gradient(45deg, var(--primary), var(--secondary));
+color: white;
+padding: 5px 15px;
+border-radius: 20px;
+font-weight: bold;
+display: inline-block;
+}
 
-        .price {
-            color: var(--accent-color);
-            font-size: 1.5em;
-            font-weight: bold;
-        }
+.modal-content {
+border: none;
+border-radius: 15px;
+}
 
-        .footer {
-            background: var(--secondary-color);
-            color: white;
-            padding: 30px 0;
-            margin-top: 50px;
-        }
-    </style>
+.modal-header {
+background: linear-gradient(45deg, var(--primary), var(--secondary));
+color: white;
+border-radius: 15px 15px 0 0;
+}
+
+.btn-primary {
+background: var(--primary);
+border: none;
+border-radius: 25px;
+padding: 10px 25px;
+transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+background: var(--secondary);
+transform: scale(1.05);
+}
+
+.form-control {
+border-radius: 10px;
+padding: 12px;
+border: 2px solid var(--light);
+}
+
+.form-control:focus {
+border-color: var(--primary);
+box-shadow: none;
+}
+
+.package-select {
+border: 2px solid var(--light);
+border-radius: 10px;
+padding: 20px;
+
+margin-bottom: 20px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.package-select:hover {
+border-color: var(--primary);
+transform: translateY(-5px);
+}
+
+.package-select.selected {
+border-color: var(--primary);
+background: var(--light);
+}
+</style>
 </head>
 <body>
-‎    <!-- القائمة العلوية -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-moon"></i> MoonLith
-            </a>
 
+<!-- القائمة العلوية -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<div class="container">
+<a class="navbar-brand" href="#">
+<i class="fas fa-moon"></i> MoonLith Studio
+</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#designs">التصاميم</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">من نحن</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <button onclick="loginWithDiscord()" class="btn btn-primary">
-                        <i class="fab fa-discord"></i> دخول عبر Discord
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav me-auto">
+<li class="nav-item">
+<a class="nav-link" href="#packages">الباقات</a>
+</li>
+</ul>
+<div class="d-flex">
+<button onclick="loginWithDiscord()" class="btn btn-light">
+<i class="fab fa-discord"></i> دخول
+</button>
+</div>
+</div>
+</div>
+</nav>
 
-    <!-- القسم الرئيسي -->
-    <section class="hero-section">
-        <div class="container">
-            <h1>MoonLith Designs</h1>
-            <p class="lead">تصاميم إبداعية احترافية لمشروعك</p>
-        </div>
-    </section>
+<!-- القسم الرئيسي -->
+<section class="hero-section">
+<div class="container">
+<h1>MoonLith Studio</h1>
+<p class="lead">تصاميم إبداعية تناسب جميع الأذواق</p>
+<button class="btn btn-light btn-lg mt-3" onclick="showOrderForm()">
+<i class="fas fa-shopping-cart"></i> اطلب الآن
+</button>
+</div>
+</section>
 
-    <!-- قسم التصاميم -->
-    <section id="designs" class="container mt-5">
-        <h2 class="text-center mb-4">تصاميمنا</h2>
-        <div class="row" id="designsGrid"></div>
-    </section>
+<!-- الباقات -->
+<section id="packages" class="container mb-5">
+<h2 class="text-center mb-4">باقاتنا</h2>
+<div class="row">
+<!-- باقة بيسك -->
+<div class="col-md-4 mb-4">
+<div class="card">
+<div class="card-body text-center">
+<h3>باقة بيسك</h3>
+<div class="price-tag mb-3">$1</div>
+<ul class="list-unstyled">
+<li>تصميم بسيط</li>
+<li>تعديلين مجاناً</li>
+<li>تسليم خلال 24 ساعة</li>
+</ul>
+<button class="btn btn-primary w-100" onclick="selectPackage('basic')">اختيار</button>
+</div>
+</div>
+</div>
+<!-- باقة برو -->
+<div class="col-md-4 mb-4">
+<div class="card">
+<div class="card-body text-center">
+<h3>باقة برو</h3>
+<div class="price-tag mb-3">$5</div>
+<ul class="list-unstyled">
+<li>تصميم احترافي</li>
+<li>تعديلات غير محدودة</li>
+<li>تسليم خلال 12 ساعة</li>
+</ul>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>MoonLith</h5>
-                    <p>متجر التصاميم الإبداعية</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>تواصل معنا</h5>
-                    <p>
-                        <i class="fab fa-discord"></i> Discord Server
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+<button class="btn btn-primary w-100" onclick="selectPackage('pro')">اختيار</button>
+</div>
+</div>
+</div>
+<!-- باقة بريميوم -->
+<div class="col-md-4 mb-4">
+<div class="card">
+<div class="card-body text-center">
+<h3>باقة بريميوم</h3>
+<div class="price-tag mb-3">$10</div>
+<ul class="list-unstyled">
+<li>تصميم احترافي مميز</li>
+<li>تعديلات غير محدودة</li>
+<li>تسليم خلال 6 ساعات</li>
+</ul>
+<button class="btn btn-primary w-100" onclick="selectPackage('premium')">اختيار</button>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-    <script>
-        // إعدادات Discord
-        const DISCORD_CLIENT_ID = '1312489656796971098';
+<!-- نموذج الطلب -->
+<div class="modal fade" id="orderModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">طلب تصميم جديد</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+<form id="orderForm" onsubmit="submitOrder(event)">
+<div class="mb-3">
+<label class="form-label">الباقة المختارة</label>
+<input type="text" id="selectedPackage" class="form-control" readonly>
+</div>
+<div class="mb-3">
+<label class="form-label">اسمك</label>
+<input type="text" class="form-control" required>
+</div>
+<div class="mb-3">
+<label class="form-label">البريد الإلكتروني</label>
+<input type="email" class="form-control" required>
+</div>
+<div class="mb-3">
+<label class="form-label">رقم الديسكورد</label>
+<input type="text" class="form-control" required>
+</div>
+<div class="mb-3">
+<label class="form-label">تفاصيل الطلب</label>
+<textarea class="form-control" rows="4" required></textarea>
+</div>
+<button type="submit" class="btn btn-primary w-100">إرسال الطلب</button>
+</form>
+</div>
+</div>
+</div>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// تكوين Discord OAuth2
+const DISCORD_CLIENT_ID = '1312489656796971098';
 const REDIRECT_URI = 'https://moon-lith.github.io/Moonlight/callback';
 
-        // التصاميم
-        const designs = [
-            {
-                id: 1,
-                title: "لوجو احترافي",
-                description: "تصميم شعار مميز لعلامتك التجارية",
-                price: 50,
-                image: "https://via.placeholder.com/400x300?text=Logo+Design"
-            },
-            {
-                id: 2,
-                title: "هوية بصرية",
-                description: "هوية بصرية كاملة لمشروعك",
-                price: 150,
-                image: "https://via.placeholder.com/400x300?text=Brand+Identity"
-            },
-            {
-                id: 3,
-                title: "تصاميم سوشيال ميديا",
-                description: "تصاميم احترافية لمنصات التواصل",
-                price: 75,
-                image: "https://via.placeholder.com/400x300?text=Social+Media"
-            }
-        ];
+// تسجيل الدخول بواسطة Discord
+function loginWithDiscord() {
+const params = new URLSearchParams({
 
-        // تسجيل الدخول بواسطة Discord
-        function loginWithDiscord() {
-            const params = new URLSearchParams({
-                client_id: DISCORD_CLIENT_ID,
-                redirect_uri: REDIRECT_URI,
-                response_type: 'code',
-                scope: 'identify guilds.join guilds voice'
-            });
+client_id: DISCORD_CLIENT_ID,
+redirect_uri: REDIRECT_URI,
+response_type: 'code',
+scope: 'identify email'
+});
 
-            window.location.href = `https://discord.com/oauth2/authorize?${params}`;
-        }
+window.location.href = `https://discord.com/oauth2/authorize?${params}`;
+}
 
-        // عرض التصاميم
-        function loadDesigns() {
-            const grid = document.getElementById('designsGrid');
-            designs.forEach(design => {
-                const card = `
-                    <div class="col-md-4">
-                        <div class="design-card">
-                            <img src="${design.image}" class="design-image" alt="${design.title}">
-                            <div class="p-3">
-                                <h3>${design.title}</h3>
-                                <p>${design.description}</p>
-                                <div class="price">$${design.price}</div>
+// اختيار الباقة
+function selectPackage(package) {
+document.getElementById('selectedPackage').value = package;
+const modal = new bootstrap.Modal(document.getElementById('orderModal'));
+modal.show();
+}
 
-<button onclick="orderDesign(${design.id})" class="btn btn-primary w-100 mt-3">
-                                    <i class="fas fa-shopping-cart"></i> طلب التصميم
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                grid.innerHTML += card;
-            });
-        }
+// إظهار نموذج الطلب
+function showOrderForm() {
+const modal = new bootstrap.Modal(document.getElementById('orderModal'));
+modal.show();
+}
 
-        // طلب تصميم
-        function orderDesign(id) {
-            // التحقق من تسجيل الدخول
-            if (!localStorage.getItem('discord_token')) {
-                loginWithDiscord();
-                return;
-            }
-            // إظهار نموذج الطلب
-            alert('سيتم التواصل معك عبر Discord');
-        }
+// إرسال الطلب
+function submitOrder(event) {
+event.preventDefault();
+const formData = new FormData(event.target);
 
-        // التحقق من حالة تسجيل الدخول
-        function checkAuth() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
-            
-            if (code) {
-                // تم تسجيل الدخول بنجاح
-                localStorage.setItem('discord_token', 'logged_in');
-                window.location.href = '/';
-            }
-        }
 
-        // تحميل الصفحة
-        window.onload = function() {
-            loadDesigns();
-            checkAuth();
-        };
-    </script>
+// هنا يمكنك إضافة كود لإرسال البيانات إلى السيرفر
+alert('تم استلام طلبك بنجاح! سنتواصل معك قريباً.');
+bootstrap.Modal.getInstance(document.getElementById('orderModal')).hide();
+}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+// التحقق من تسجيل الدخول
+function checkAuth() {
+const urlParams = new URLSearchParams(window.location.search);
+const code = urlParams.get('code');
+if (code) {
+// تم تسجيل الدخول بنجاح
+localStorage.setItem('discord_token', code);
+window.location.href = '/';
+}
+}
+
+// تشغيل عند تحميل الصفحة
+window.onload = checkAuth;
+</script>
+
 </body>
 </html>
